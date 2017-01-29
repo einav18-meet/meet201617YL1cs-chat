@@ -1,15 +1,24 @@
 #2016-2017 PERSONAL PROJECTS: TurtleChat!
-#WRITE YOUR NAME HERE!
+#EinavCohen
 
 #####################################################################################
 #                                   IMPORTS                                         #
 #####################################################################################
-#import the turtle module
-#import the Client class from the turtle_chat_client module
-#Finally, from the turtle_chat_widgets module, import two classes: Button and TextInput
+import turtle
+from turtle_chat_client import Client 
+from turtle_chat_widgets import Button,TextInput
+from abc import ABCMeta,abstractmethod
 #####################################################################################
 #####################################################################################
-
+class TextBox (TextInput):
+    def draw_dox(self):
+       turtle.penup()
+       turtle.goto(self.pos)
+       turtle.pendown()
+       turtle.goto(self.pos[0]+width,self.pos[1])
+       turtle.goto(self.pos[0]+self.width,self.pos[1]+self.heigh)
+       turtle.goto(self.pos[0],self.pos[1]+self.heigh)
+       turtle.goto(self.pos)
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
