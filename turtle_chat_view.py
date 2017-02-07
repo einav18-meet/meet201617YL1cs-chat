@@ -11,14 +11,20 @@ from abc import ABCMeta,abstractmethod
 #####################################################################################
 #####################################################################################
 class TextBox (TextInput):
-    def draw_dox(self):
-       turtle.penup()
-       turtle.goto(self.pos)
-       turtle.pendown()
-       turtle.goto(self.pos[0]+width,self.pos[1])
-       turtle.goto(self.pos[0]+self.width,self.pos[1]+self.heigh)
-       turtle.goto(self.pos[0],self.pos[1]+self.heigh)
-       turtle.goto(self.pos)
+    def draw_box(self):
+        self.boxx= turtle.clone()
+        self.boxx.penup()
+        self.boxx.goto(self.pos)
+        self.boxx.pendown()
+        self.boxx.goto(self.pos[0]+self.width,self.pos[1])
+        self.boxx.goto(self.pos[0]+self.width,self.pos[1]+self.height)
+        self.boxx.goto(self.pos[0],self.pos[1]+self.height)
+        self.boxx.goto(self.pos)
+
+    def write_msg(self):
+        self.writer.clear()
+        self.writer.write(self.new_msg)
+        
 #####################################################################################
 #                                   TextBox                                         #
 #####################################################################################
@@ -34,7 +40,7 @@ class TextBox (TextInput):
 #will appear.
 #
 #2. All TextInput objects have an internal turtle called writer (i.e. self will
-#   have something called writer).  You can write new text with it using code like
+#   have something called writer).  You can write new text with it using code like    
 #
 #   self.writer.write(a_string_variable)
 #
@@ -65,7 +71,16 @@ class TextBox (TextInput):
 #####################################################################################
 #####################################################################################
 
+class SendButton(Button):
+    def __init__(self,view,my_turtle=None,shape=None,pos=(0,0)):
+        self.aview = view
+        super(SendButton,self).__init__(my_turtle,shape,pos)
+        
 
+    def fun(self):
+        self.aview.send_msg()
+        
+    
 ##################################################################
 #                             View                               #
 ##################################################################
