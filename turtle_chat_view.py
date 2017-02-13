@@ -101,25 +101,33 @@ class View:
         :param username: the name of this chat user
         :param partner_name: the name of the user you are chatting with
         '''
-        ###
+        self.username=username
+        self.partner_name=partner_name
+        
+        """
         #Store the username and partner_name into the instance.
         ###
 
         ###
-        #Make a new client object and store it in this instance of View
+        #Make a new Client object and store it in this instance of View
         #(i.e. self).  The name of the instance should be my_client
-        ###
+        """
+
+        self.my_client= Client()
+        
 
         ###
         #Set screen dimensions using turtle.setup
         #You can get help on this function, as with other turtle functions,
         #by typing
         #
-        #   import turtle
+        #  import turtle
         #   help(turtle.setup)
         #
         #at the Python shell.
         ###
+
+        turtle.setup (width=200, height=200, startx=0, starty=0)
 
         ###
         #This list will store all of the messages.
@@ -135,20 +143,27 @@ class View:
         #You can use the clear() and write() methods to erase
         #and write messages for each
         ###
+        
+        self.oldmsg=turtle.clone()
 
         ###
         #Create a TextBox instance and a SendButton instance and
         #Store them inside of this instance
         ###
 
+        textbox=TextBox()
+        sendbutton=SendButton()
+
         ###
         #Call your setup_listeners() function, if you have one,
         #and any other remaining setup functions you have invented.
         ###
+        
+        setup_listeners()
 
     def send_msg(self):
         '''
-        You should implement this method.  It should call the
+        You should implement (finish) this method.  It should call the
         send() method of the Client object stored in this View
         instance.  It should also call update the list of messages,
         self.msg_queue, to include this message.  It should
@@ -156,6 +171,7 @@ class View:
         It should call self.display_msg() to cause the message
         display to be updated.
         '''
+
         pass
 
     def get_msg(self):
